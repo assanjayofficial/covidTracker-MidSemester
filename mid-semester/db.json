@@ -1,0 +1,10 @@
+{ "data" :
+    [
+        {
+            "name": "Indonesia",
+            "positif": "514",
+            "sembuh": "29",
+            "meninggal": "48"
+        }
+    ]
+}
