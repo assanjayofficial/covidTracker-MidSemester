@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import Navbar from '../../molecules/NavBar'
-import Card from '../../molecules/Card'
 import Axios from 'axios'
 
 const Dashboard = () => {
