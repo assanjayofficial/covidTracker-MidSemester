@@ -5,16 +5,28 @@ import Axios from 'axios'
 
 const Dashboard = () => {
 
-    const [users, setUsers] = useState([])
+    const [positif, setPositif] = useState([])
+    const [sembuh, setSembuh] = useState([])
+    const [meninggal, setMeninggal] = useState([])
 
     useEffect (() => {
         //fetch
         // fetch('https://reqres.in/api/users').then(res=> res.json()).then(json => setUsers(json.data))
         //axios
-        Axios.get('http://localhost:3004/data').then(res=> setUsers(res.data));
-    }, [users])
-
-    console.log(users);
+        Axios.get('https://api.kawalcorona.com/indonesia').then((res)=> setPositif(res.data[0].positif));
+    }, [])
+    useEffect (() => {
+        //fetch
+        // fetch('https://reqres.in/api/users').then(res=> res.json()).then(json => setUsers(json.data))
+        //axios
+        Axios.get('https://api.kawalcorona.com/indonesia').then((res)=> setSembuh(res.data[0].sembuh));
+    }, [])
+    useEffect (() => {
+        //fetch
+        // fetch('https://reqres.in/api/users').then(res=> res.json()).then(json => setUsers(json.data))
+        //axios
+        Axios.get('https://api.kawalcorona.com/indonesia').then((res)=> setMeninggal(res.data[0].meninggal));
+    }, [])
 
 
     return (
@@ -23,17 +35,15 @@ const Dashboard = () => {
             <h3>Data Indonesia</h3>
             <hr/>
             <br/>
-            <div className='row align-items-start'>
-                {
-                    users.map( (item) => [
-                        <Card
-                        pos={`${item.positif}`}
-                        semb={`${item.sembuh}`}
-                        men={`${item.meninggal}`}
-                        />
-                    ])
-                }
-            </div>
+                <div className='container'>
+                    {`Positive Case : ${positif}`}
+                    <br/>
+                    <br/>
+                    {`Recovered : ${sembuh}`}
+                    <br/>
+                    <br/>
+                    {`Death : ${meninggal}`}
+                </div>
         </div>
     )
 }
